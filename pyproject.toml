@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "leet"
+version = "0.1.0"
+description = ""
+authors = ["richarddevers <richard.devers.ext@orange.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pytest = "^7.2.0"
+ipdb = "^0.13.11"
+black = "^22.12.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
