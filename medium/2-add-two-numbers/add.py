@@ -12,13 +12,8 @@ def two_numbers(
     l1.reverse()
     l2.reverse()
 
-    l1_as_string = ""
-    l2_as_string = ""
-
-    for elt in l1:
-        l1_as_string += str(elt)
-    for elt in l2:
-        l2_as_string += str(elt)
+    l1_as_string = "".join([str(elt) for elt in l1])
+    l2_as_string = "".join([str(elt) for elt in l2])
 
     l1_ast = ast.literal_eval(l1_as_string)
     l2_ast = ast.literal_eval(l2_as_string)
