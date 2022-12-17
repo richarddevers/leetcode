@@ -1,4 +1,10 @@
+# https://leetcode.com/problems/longest-substring-without-repeating-characters/
+
+# Given a string s, find the length of the longest
+# substring without repeating characters.
 import typing as t
+
+import pytest
 
 
 def has_unique_char(s1: str) -> bool:
@@ -34,3 +40,20 @@ def substring(
         i += 1
 
     return max([v for k, v in visited.items()])
+
+
+@pytest.mark.parametrize(
+    "input,expected",
+    [
+        ("abcabcbb", 3),
+        ("bbbbb", 1),
+        ("pwwkew", 3),
+    ],
+)
+def test_longest_substring(
+    input: str,
+    expected: int,
+):
+    result = longest.substring(input)
+
+    assert result == expected
