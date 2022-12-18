@@ -95,7 +95,7 @@ def test_critical_points(
     head: t.List[int],
     expected: t.List[int],
 ):
-    result = critical.points(
+    result = points(
         head=head,
     )
 

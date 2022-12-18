@@ -1,7 +1,7 @@
-# 1. Two Sum
+# 1. Two Sum SORTED
+# https://www.youtube.com/watch?v=-gjxg6Pln50&t=7s&ab_channel=TeamAlgoDaily
 
-# https://leetcode.com/problems/two-sum/
-# Given an array of integers nums and an integer target,
+# Given an array of SORTED integers nums and an integer target,
 #  return indices of the two numbers such that they add up to target.
 
 # You may assume that each input would have exactly one solution,
@@ -26,38 +26,45 @@ import typing as t
 
 import pytest
 
-test_data = [
-    ([2, 7, 11, 15], 9, [0, 1]),
-    ([3, 2, 4], 6, [1, 2]),
-    ([3, 3], 6, [0, 1]),
-]
 
-
-def two_sum1(
+def two_sum2(
     nums: t.List[int],
     target: int,
 ) -> t.List[int]:
-    i = 0
-    previous_value_index: t.Dict[int, int] = {}  # value->index
+    # Input: nums = [2,7,11,15], target = 9
+    # Output: [0,1]
+    # Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+    left = 0
+    right = len(nums) - 1
+    nums.sort()
+    while left < right:
+        result = nums[left] + nums[right]
 
-    for i, n in enumerate(nums):
-        diff = target - n
-        if diff in previous_value_index:
-            return [previous_value_index[diff], i]
-        previous_value_index[n] = i
+        if result == target:
+            return [left, right]
+
+        if result < target:
+            left += 1
+        else:
+            right -= 1
+    return []
 
 
 @pytest.mark.parametrize(
     "nums,target,expected",
-    test_data,
+    [
+        ([2, 7, 11, 15], 9, [0, 1]),
+        ([2, 3, 4], 6, [0, 2]),
+        ([3, 3], 6, [0, 1]),
+    ],
 )
-def test_two_sum1(
+def test_two_sum2(
     nums,
     target,
     expected,
 ) -> None:
 
-    result = two_sum1(
+    result = two_sum2(
         nums=nums,
         target=target,
     )

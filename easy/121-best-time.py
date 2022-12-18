@@ -18,3 +18,28 @@
 # Input: prices = [7,6,4,3,1]
 # Output: 0
 # Explanation: In this case, no transactions are done and the max profit = 0.
+
+import typing as t
+
+import pytest
+
+
+def max_profit(prices: t.List[int]) -> int:
+    res = 0
+    l = 0
+    for r in range(1, len(prices)):
+        if prices[r] < prices[l]:
+            l = r
+        res = max(res, prices[r] - prices[l])
+    return res
+
+
+def test_max_profit() -> None:
+    prices = [7, 1, 5, 3, 6, 4]
+    expected = 5
+
+    result = max_profit(
+        prices=prices,
+    )
+
+    assert result == expected

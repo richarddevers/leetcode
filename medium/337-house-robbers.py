@@ -1,5 +1,7 @@
 import typing as t
 
+import pytest
+
 Root = t.List[int]
 
 
@@ -47,10 +49,7 @@ def rob(
     )
 
 
-import house
-import pytest
-
-TreeNode = house.TreeNode
+TreeNode = TreeNode
 
 first_test = (
     TreeNode(
